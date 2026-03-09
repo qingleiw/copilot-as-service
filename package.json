@@ -1,0 +1,87 @@
+{
+  "name": "copilot-as-service",
+  "displayName": "Copilot as Service",
+  "description": "Expose GitHub Copilot as an OpenAI-compatible HTTP API server for external applications",
+  "version": "0.0.1",
+  "publisher": "qingleiwang-vscode-copilot-as-service",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "AI"
+  ],
+  "keywords": [
+    "copilot",
+    "openai",
+    "api",
+    "server",
+    "proxy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qingleiw/copilot-as-service"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilot-as-service.start",
+        "title": "Copilot as Service: Start Server"
+      },
+      {
+        "command": "copilot-as-service.stop",
+        "title": "Copilot as Service: Stop Server"
+      },
+      {
+        "command": "copilot-as-service.status",
+        "title": "Copilot as Service: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "Copilot as Service",
+      "properties": {
+        "copilotAsService.port": {
+          "type": "number",
+          "default": 3000,
+          "description": "Port for the local HTTP server"
+        },
+        "copilotAsService.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Host to bind the server (use 0.0.0.0 for all interfaces)"
+        },
+        "copilotAsService.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the server when VS Code opens"
+        },
+        "copilotAsService.authToken": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Bearer token to protect the API (leave empty to disable auth)"
+        },
+        "copilotAsService.defaultModel": {
+          "type": "string",
+          "default": "copilot-gpt-4o",
+          "description": "Default Copilot model to use"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.7.1",
+    "typescript": "^5.4.0"
+  }
+}
