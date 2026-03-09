@@ -63,3 +63,7 @@ curl http://localhost:3000/v1/chat/completions \
 
 - VS Code 1.90+
 - GitHub Copilot extension installed and signed in
+
+## Changelog
+
+- See [CHANGELOG.md](./CHANGELOG.md) for release notes.
